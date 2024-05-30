@@ -1,0 +1,51 @@
+{% block content %}
+<h1>Welcome, {{ current_user.username }}!</h1>
+<div class="url-input">
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div>
+      {{ form.url(size=32) }} <br />
+      {% for error in form.url.errors %}
+      <span style="color: red">[{{ error }}]</span>
+      {% endfor %}
+    </div>
+    <div>{{ form.submit() }}</div>
+  </form>
+</div>
+<div class="urls">
+  {% for url in urls %}
+  <div class="card">
+    <div>
+      <h2>{{ url.url }}</h2>
+      <p>{{ url.shorten_url }}</p>
+    </div>
+    <button onclick="copyToClipboard(this,'{{ url.shorten_url }}')">
+      <span>Copy URL</span>
+    </button>
+    <a href="{{ url.shorten_url }}" target="_blank">Visit Link</a>
+    <a href="{{ url_for('delete_url', url_id=url.id) }}">Delete URL</a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %} {% block scripts %}
+<script>
+  function copyToClipboard(button, urlToCopy) {
+    const inputElement = document.createElement("input");
+    inputElement.setAttribute("value", urlToCopy);
+    document.body.appendChild(inputElement);
+
+    inputElement.select();
+    inputElement.setSelectionRange(0, 99999);
+
+    document.execCommand("copy");
+
+    document.body.removeChild(inputElement);
+
+    button.querySelector("span").textContent = "Copied!";
+
+    setTimeout(function () {
+      button.querySelector("span").textContent = "Copy URL";
+    }, 2000);
+  }
+</script>
+{% endblock %}
