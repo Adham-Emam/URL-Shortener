@@ -7,30 +7,35 @@
       name="description"
       content="Easily shorten long URLs with our URL Shortener. Generate compact, user-friendly links for sharing, tracking, and managing your links efficiently. Perfect for personal and business use."
     />
-
     <title>URL Shortener</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+      />
+      {% block styles %}
+      {% endblock %}
   </head>
   <body>
     <nav>
-      <ul>
-        {% if current_user.is_authenticated %}
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        {% else %}
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        {% endif %}
-      </ul>
+      <div class="container">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+      </div>
     </nav>
-    <div>
-      {% with messages = get_flashed_messages(with_categories=true) %} {% if
-      messages %} {% for category, message in messages %}
-      <div class="alert alert-{{ category }}">{{ message }}</div>
-      {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+    <div class="container">
+      <div>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+      </div>
+      {% block scripts %} {% endblock %}
     </div>
-    {% block scripts %} {% endblock %}
   </body>
 </html>

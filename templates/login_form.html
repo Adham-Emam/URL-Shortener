@@ -1,4 +1,57 @@
-{% block content %} {% with messages =
+{% extends 'layout.html' %} {% block styles %}
+<style>
+  nav {
+    display: none;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 20px;
+    color: white;
+  }
+  form {
+    background-color: #04293d;
+    color: white;
+    padding: 50px 20px;
+  }
+  form input {
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid white;
+    background-color: transparent;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+  }
+  form input:hover,
+  form input:focus {
+    border-color: #107cb7;
+  }
+  form .btn {
+    background-color: #107cb7;
+    border: none;
+    padding: 5px 30px;
+    cursor: pointer;
+    margin: 10px 0 20px;
+  }
+  form .btn:hover {
+    background-color: #194259;
+  }
+  form a {
+    color: #107cb7;
+    transition-duration: 0.3s;
+  }
+  form a:hover {
+    color: white;
+  }
+</style>
+{% endblock %} {% block content %} {% with messages =
 get_flashed_messages(with_categories=true) %} {% if messages %}
 <ul>
   {% for category, message in messages %}
@@ -6,8 +59,8 @@ get_flashed_messages(with_categories=true) %} {% if messages %}
   {% endfor %}
 </ul>
 {% endif %} {% endwith %}
-<h2>{{title}}</h2>
 <form method="POST" action="">
+  <h2>{{title}}</h2>
   {{ form.hidden_tag() }}
   <div>
     {{ form.username(size=32) }}<br />
@@ -29,7 +82,7 @@ get_flashed_messages(with_categories=true) %} {% if messages %}
     {% endfor %}
   </div>
   {% endif %}
-  <div>{{ form.submit() }}</div>
+  <div>{{ form.submit(class='btn') }}</div>
   {% if title == 'Register' %}
   <p>
     Already have an account,

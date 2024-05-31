@@ -44,6 +44,11 @@ def generate_base62_id(length=8):
     return ''.join(random.choices(BASE62, k=length))
 
 
+@app.errorhandler(404)
+def error_handler(error):
+    return render_template('error.html', error=error)
+
+
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():

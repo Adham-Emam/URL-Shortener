@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  position: relative;
+}
+/* Default container width */
+.container {
+  max-width: 1200px;
+  padding: 0 50px;
+  margin: 0 auto; /* Center the container */
+}
+
+/* Media query for tablets */
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Adjust width for tablets */
+  }
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 480px) {
+  .container {
+    max-width: 100%; /* Adjust width for mobile devices */
+    padding: 0 10px; /* Add some padding for better readability */
+  }
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+.alert-danger {
+  color: crimson;
+}
+.alert-success {
+  color: chartreuse;
+}
+nav {
+  padding: 20px 0;
+  background-color: #003049;
+  margin-bottom: 50px;
+}
+nav ul {
+  width: fit-content;
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
+nav ul a {
+  color: white;
+  opacity: 0.7;
+  transition-duration: 0.3s;
+}
+nav ul a:hover {
+  opacity: 1;
+}
+
+h1,
+h2,
+h3 {
+  color: #0d1b2a;
+}
+
+.url-input {
+  background-color: #003049;
+  border-radius: 25px;
+  margin: 40px 0 30px;
+  overflow: hidden;
+}
+.url-input form {
+  position: relative;
+}
+.url-input form input {
+  padding: 15px 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+}
+.url-input form input:nth-child(1) {
+  width: 100%;
+}
+.url-input form input.btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: fit-content;
+  transition-duration: 0.3s;
+  background-color: #021b28;
+  cursor: pointer;
+}
+.url-input form input.btn:hover {
+  background-color: #04293d;
+}
+
+.urls .card {
+  background-color: #eee;
+  box-shadow: 0 0 10px #777;
+  padding: 30px 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+    margin-bottom: 30px;
+}
+.urls .card h2 {
+  margin-bottom: 10px;
+}
+.urls .card p {
+  color: #555;
+}
+.urls .card button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.urls .card button,
+.urls .card a {
+    color: #04293d;
+    font-size: 1rem;
+    transition-duration: 0.3s;
+}
+.urls .card button:hover,
+.urls .card a:hover {
+    color: #107cb7;
+}
+@media (max-width:767px) {
+    .urls .card button,
+    .urls .card a {
+        font-size: 0.8rem;
+    }
+    
+}
